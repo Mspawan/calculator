@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            color: black;
+            text-align: center;
+            font-size: 25px;
+        }
+        
+        table {
+            margin-center: 200px;
+            text-align: center;
+            font-size: 30px;
+        }
+        
+        input {
+            margin: 30px;
+            height: 50px;
+            width: 291px;
+            font-size: 40px;
+            opacity: 0.5;
+            font-weight: bold;
+        }
+        
+        .input :hover {
+            border-color: white;
+        }
+        
+        button {
+            color: rgb(249, 247, 247);
+            background-color: rgb(24, 156, 154);
+            width: 70px;
+            height: 65px;
+            font-weight: bold;
+            font-size: 25px;
+        }
+        
+        button:hover {
+            background-color: rgb(20, 219, 219);
+            color: black;
+            border-color: white;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .calculator {
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+
+<body style="background-image: url(bak2.jpg); background-repeat: no-repeat; background-size: 100%;">
+    <u>
+        <h1>CALCULATOR</h1>
+    </u>
+    <center>
+
+        <div class="calculator">
+        </div>
+        <input type="text" id="result" readonly>
+        <table>
+            <tr>
+                <td><button onclick="appendNumber(7)">7</button></td>
+                <td><button onclick="appendNumber(8)">8</button></td>
+                <td><button onclick="appendNumber(9)">9</button></td>
+                <td><button onclick="setOperator('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendNumber(4)">4</button></td>
+                <td><button onclick="appendNumber(5)">5</button></td>
+                <td><button onclick="appendNumber(6)">6</button></td>
+                <td><button onclick="setOperator('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendNumber(1)">1</button></td>
+                <td><button onclick="appendNumber(2)">2</button></td>
+                <td><button onclick="appendNumber(3)">3</button></td>
+                <td><button onclick="setOperator('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="appendNumber(0)">0</button></td>
+                <td><button onclick="clearResult('c')">c</button></td>
+                <td><button onclick="calculate('=')">=</button></td>
+                <td><button onclick="setOperator('/')">/</button></td>
+
+            </tr>
+        </table>
+    </center>
+    </div>
+    <script>
+        let operator = '';
+        let firstNumber = '';
+        let secondNumber = '';
+
+
+        function appendNumber(num) {
+            if (operator === '') {
+                firstNumber += num;
+                document.getElementById('result').value = firstNumber;
+            } else {
+                secondNumber += num;
+                document.getElementById('result').value = secondNumber;
+            }
+        }
+
+        function setOperator(op) {
+            operator = op;
+        }
+
+        function calculate() {
+            let result;
+            switch (operator) {
+
+                case '+':
+                    result = parseInt(firstNumber) + parseInt(secondNumber);
+                    break;
+                case '-':
+                    result = parseInt(firstNumber) - parseInt(secondNumber);
+                    break;
+                case '*':
+                    result = parseInt(firstNumber) * parseInt(secondNumber);
+                    break;
+                case '/':
+                    result = parseInt(firstNumber) / parseInt(secondNumber);
+                    break;
+            }
+            document.getElementById('result').value = result;
+        }
+
+        function clearResult() {
+
+            operator = '';
+            firstNumber = '';
+            secondNumber = '';
+            document.getElementById('result').value = '';
+
+        }
+    </script>
+</body>
+
+</html>
